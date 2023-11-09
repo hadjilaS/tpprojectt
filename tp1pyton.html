@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP0</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="normalize.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="index.html"><i class="fas fa-home"></i> </a>
+            </li>
+        </ul>
+    </nav>
+
+<main>
+ <h3>Inroduction TP0</h3>
+    <p>Cette exercice consiste a calculer la moyenne,l'ecartype,et la variation avec deux methodes differentes:
+    </p>
+
+<pre>
+    import numpy as np
+    n=int(input("Veuillez entrer la taille du tableau: "))
+    print("Veuillez saisir les element du tableau: ")
+    x=np.zeros(n)
+    for i in range(n):
+        x[i]=int(input("x["+str(i)+"]="))
+    print(x)
+    s=0
+    for i in range(n):
+        s+=x[i]
+    print("S=",s)
+    xbar=s/n
+    print("Xbar=",xbar)
+    y=np.zeros(n)
+    somme=0
+    for i in range(n):
+        y[i]=(x[i]-xbar)**2
+    print(y)
+    for i in range(n):
+        somme+=y[i]
+    print("Somme_de_la_difference=",somme)
+    ecartype=np.sqrt(somme/n)
+    print("Ecartype=",ecartype)
+    dx=np.zeros(n-1)
+    for i in range(n-1):
+        dx[i]=x[i+1]-x[i]
+    print('LE CALCUL DX EST ',dx[i])  
+
+    #Methode 2
+    import numpy as np
+n=int(input("Veuillez entrer la taille du tableau: "))
+x=np.zeros(n)
+print("Veuillez saisir les element du tableau: ")
+for i in range(n):
+    x[i]=int(input("x["+str(i)+"]="))
+print(x)
+xbar=np.average(x)
+print("Xbar=",xbar)
+y=np.ones(n)
+for i in range(n):
+    y[i]=(x[i]-xbar)**2
+print(y)
+ecartype=np.sqrt((sum(y))/n)
+print("Ecartype=",ecartype)
+dx=np.zeros(n-1)
+dx=np.diff(x)
+print(dx)
+   </pre>
+   <h3>EXERCICE 1</h3>
+<p> Cette exercice consiste a resoudre un systeme d'equation lineare avec la matrice inverse</p>
+   <pre>
+    import numpy as np
+    import math 
+    print("Ce programme consiste à remplir une matrice et un vecteur")
+    
+    n = int(input("Entrez l'ordre de la matrice : "))
+    
+    # Créez la matrice A en demandant à l'utilisateur d'entrer les éléments
+    A = np.zeros((n, n))
+    print("Entrez les éléments de la matrice A :")
+    for i in range(n):
+        for j in range(n):
+            A[i, j] = float(input("A["+str(i)+"]["+str(i)+"]="))
+    
+    # Créez le vecteur y en demandant à l'utilisateur d'entrer les éléments
+    y = np.zeros(n)
+    print("Entrez les éléments du vecteur y :")
+    for i in range(n):
+        y[i] = float(input("A["+str(i)+"]["+str(i)+"]= "))
+    
+    # Méthode 1
+    x1=np.zeros(n)
+    x1 = np.linalg.inv(A) @ y
+    print("x1 =", x1)
+    
+    # Méthode 2
+    x2=np.zeros(n)
+    x2 = np.linalg.solve(A, y)
+    print("x2 =", x2)
+   </pre>
+
+
+</main>
+</body>
+</html>
+
